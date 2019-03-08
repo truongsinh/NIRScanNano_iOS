@@ -25,10 +25,6 @@ typedef enum
 @interface DetailViewController ()
 @end
 
-LineChartData *_reflectanceData;
-LineChartData *_absorbanceData;
-LineChartData *_intensityData;
-
 @implementation DetailViewController
 
 float xMax;
@@ -66,8 +62,6 @@ float yMin;
     [self setupReflectance];
     [self setupAbsorbance];
     [self setupIntensity];
-    
-    _chartView.data = _reflectanceData;
 }
 
 -(void)setupAbsorbance
@@ -93,9 +87,6 @@ float yMin;
             aWavelengthOrNumber = (NSNumber *)[_detailItem[kKSTDataManagerWavelength] objectAtIndex:index];
             aReflectance = [_detailItem[kKSTDataManagerAbsorbance] objectAtIndex:index];
         }
-        
-        [lineChartDataArrayY addObject:[[ChartDataEntry alloc] initWithX:index y:aReflectance.doubleValue]];
-        [lineChartDataArrayX addObject:[NSString stringWithFormat:@"%2.0f", aWavelengthOrNumber.floatValue]];
         index++;
     }
     
@@ -125,9 +116,7 @@ float yMin;
             aReflectance = [_detailItem[kKSTDataManagerIntensity] objectAtIndex:index];
         }
         
-        [lineChartDataArrayY addObject:[[ChartDataEntry alloc] initWithX:index y:aReflectance.doubleValue]];
-        [lineChartDataArrayX addObject:[NSString stringWithFormat:@"%2.0f", aWavelengthOrNumber.floatValue]];
-        index++;
+       index++;
     }
     
 }
@@ -156,22 +145,9 @@ float yMin;
             aReflectance = [_detailItem[kKSTDataManagerReflectance] objectAtIndex:index];
         }
         
-        [lineChartDataArrayY addObject:[[ChartDataEntry alloc] initWithX:index y:aReflectance.doubleValue]];
-        [lineChartDataArrayX addObject:[NSString stringWithFormat:@"%2.0f", aWavelengthOrNumber.floatValue]];
         index++;
     }
     
-}
-
-#pragma mark - ChartViewDelegate
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
-{
-    NSLog(@"chartValueSelected");
-}
-
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
-{
-    NSLog(@"chartValueNothingSelected");
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -181,18 +157,6 @@ float yMin;
 
 -(IBAction)didChangeSegment:(UISegmentedControl *)segmentControl
 {
-    if( _scanSegmentControl.selectedSegmentIndex == 0 )
-    {
-        _chartView.data = _reflectanceData;
-    }
-    else if( _scanSegmentControl.selectedSegmentIndex == 1)
-    {
-        _chartView.data = _absorbanceData;
-    }
-    else if( _scanSegmentControl.selectedSegmentIndex == 2)
-    {
-        _chartView.data = _intensityData;
-    }
 }
 
 #pragma mark - Email Support

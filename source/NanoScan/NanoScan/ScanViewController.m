@@ -32,10 +32,6 @@ typedef enum
 @property NSMutableDictionary *localScanDictionary;
 @end
 
-LineChartData *_reflectanceData;
-LineChartData *_absorbanceData;
-LineChartData *_intensityData;
-
 bool shouldKickout;
 bool shouldSaveToSDCard;
 
@@ -132,8 +128,6 @@ NSMutableDictionary *_localScanDictionary;
             aReflectance = [scanDictionary[kKSTDataManagerAbsorbance] objectAtIndex:index];
         }
         
-        [lineChartDataArrayY addObject:[[ChartDataEntry alloc] initWithX:index y:aReflectance.doubleValue]];
-        [lineChartDataArrayX addObject:[NSString stringWithFormat:@"%2.0f", aWavelengthOrNumber.floatValue]];
         index++;
     }
 }
@@ -164,8 +158,6 @@ NSMutableDictionary *_localScanDictionary;
             aReflectance = [scanDictionary[kKSTDataManagerIntensity] objectAtIndex:index];
         }
         
-        [lineChartDataArrayY addObject:[[ChartDataEntry alloc] initWithX:index y:aReflectance.doubleValue]];
-        [lineChartDataArrayX addObject:[NSString stringWithFormat:@"%2.0f", aWavelengthOrNumber.floatValue]];
         index++;
     }
 
@@ -204,17 +196,6 @@ NSMutableDictionary *_localScanDictionary;
         }
         index++;
     }
-}
-
-#pragma mark - ChartViewDelegate
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
-{
-    NSLog(@"chartValueSelected");
-}
-
-- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
-{
-    NSLog(@"chartValueNothingSelected");
 }
 
 -(void)allowViewToPersist
@@ -334,7 +315,6 @@ NSMutableDictionary *_localScanDictionary;
 
 -(void)isConnecting:(NSNotificationCenter *)aNotification
 {
-    [_chartView setHidden:YES];
     
     [_activityIndicator startAnimating];
     
@@ -352,7 +332,6 @@ NSMutableDictionary *_localScanDictionary;
 
 -(void)didConnect:(NSNotificationCenter *)aNotification
 {
-    [_chartView setHidden:NO];
     
     NSLog(@"NIRScan Nano is connected via BLE");
     
@@ -388,22 +367,8 @@ NSMutableDictionary *_localScanDictionary;
         [self setupReflectance];
         [self setupAbsorbance];
         [self setupIntensity];
-        
-        if( _scanSegmentControl.selectedSegmentIndex == 0 )
-        {
-            _chartView.data = _reflectanceData;
-        }
-        else if( _scanSegmentControl.selectedSegmentIndex == 1)
-        {
-            _chartView.data = _absorbanceData;
-        }
-        else if( _scanSegmentControl.selectedSegmentIndex == 2)
-        {
-            _chartView.data = _intensityData;
-        }
     }
     
-    [_chartView setHidden:NO];
     [_startButton setTitle:@"Start Scan" forState:UIControlStateNormal];
     
     // Now that we have scan data, populate it
@@ -422,18 +387,6 @@ NSMutableDictionary *_localScanDictionary;
 
 -(IBAction)didChangeSegment:(UISegmentedControl *)segmentControl
 {
-    if( _scanSegmentControl.selectedSegmentIndex == 0 )
-    {
-        _chartView.data = _reflectanceData;
-    }
-    else if( _scanSegmentControl.selectedSegmentIndex == 1)
-    {
-        _chartView.data = _absorbanceData;
-    }
-    else if( _scanSegmentControl.selectedSegmentIndex == 2)
-    {
-        _chartView.data = _intensityData;
-    }
 }
 
 -(void)showConfigureView:(id)sender
@@ -739,8 +692,6 @@ NSMutableDictionary *_localScanDictionary;
         _nano.KSTNanoSDKshouldSaveToiOSDevice = [NSNumber numberWithBool:NO];
         NSLog(@"Do not save to iOS");
     }
-    
-    [_chartView setHidden:YES];
     
     [_startButton setTitle:@"Scanning ..." forState:UIControlStateNormal];
     

@@ -11,10 +11,7 @@
 #import "KSTNanoSDK.h"
 #import "KSTDataManager.h"
 
-#import <Charts/Charts.h>
-@import Charts;
-
-@interface ScanViewController : UIViewController <UITextFieldDelegate, ChartViewDelegate>
+@interface ScanViewController : UIViewController <UITextFieldDelegate, UITextFieldDelegate>
 
 @property( weak, nonatomic ) IBOutlet UITableView *scanTableView;
 @property( weak, nonatomic ) IBOutlet UIButton *startButton;
@@ -28,8 +25,6 @@
 @property (strong, nonatomic) UISwitch *continuousScanSwitchView;
 @property (strong, nonatomic) UISwitch *iOSSwitchView;
 @property (strong, nonatomic) UITextField *textField;
-
-@property (nonatomic, strong) IBOutlet LineChartView *chartView;
 
 @property( strong, nonatomic ) KSTNanoSDK *nano;
 @property( strong, nonatomic ) KSTDataManager *dataManager;
