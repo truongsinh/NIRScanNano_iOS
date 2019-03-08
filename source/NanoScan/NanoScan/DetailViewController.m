@@ -63,49 +63,6 @@ float yMin;
     UIView *footer = [[UIView alloc] initWithFrame:CGRectZero];
     _scanInfoTableView.tableFooterView = footer;
     
-    /* NEW CHART */
-    _chartView.delegate = self;
-    
-    _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"";
-    _chartView.noDataText = @"";
-    
-    _chartView.dragEnabled = YES;
-    [_chartView setScaleEnabled:YES];
-    _chartView.pinchZoomEnabled = YES;
-    _chartView.drawGridBackgroundEnabled = NO;
-    _chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
-   // _chartView.xAxis.spaceBetweenLabels = 5;
-    _chartView.maxVisibleCount = 25;
-    
-    // x-axis limit line
-    ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:0.0 label:@"0.0"];
-    llXAxis.lineWidth = 2.0;
-    llXAxis.lineColor = [UIColor redColor];
-    llXAxis.lineDashLengths = @[@(5.f), @(5.f)];
-    llXAxis.labelPosition = ChartLimitLabelPositionRightTop;
-    llXAxis.valueFont = [UIFont systemFontOfSize:10.f];
-    
-    ChartYAxis *leftAxis = _chartView.leftAxis;
-    [leftAxis addLimitLine:llXAxis];
-    //leftAxis.startAtZeroEnabled = NO;
-    leftAxis.gridLineDashLengths = @[@5.f, @2.5f];
-    leftAxis.drawLimitLinesBehindDataEnabled = YES;
-    
-    _chartView.rightAxis.enabled = NO;
-    
-    /*
-    BalloonMarker *marker = [[BalloonMarker alloc] initWithColor:[UIColor colorWithWhite:180/255. alpha:1.0] font:[UIFont systemFontOfSize:12.0] insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
-    marker.minimumSize = CGSizeMake(80.f, 40.f);
-    _chartView.marker = marker;
-    */
-    
-    _chartView.legend.form = ChartLegendFormLine;
-    _chartView.legend.enabled = NO;
-    
-    _chartView.autoScaleMinMaxEnabled = YES;
-    [_chartView animateWithXAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
-    
     [self setupReflectance];
     [self setupAbsorbance];
     [self setupIntensity];
@@ -142,26 +99,6 @@ float yMin;
         index++;
     }
     
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues:lineChartDataArrayY label:@"Absorbance"];
-    
-    set1.drawValuesEnabled = YES;
-    set1.drawFilledEnabled = YES;
-    set1.drawCircleHoleEnabled = YES;
-    
-    set1.lineDashLengths = @[@5.f, @2.5f];
-    [set1 setColor:UIColor.blackColor];
-    [set1 setCircleColor:UIColor.greenColor];
-    set1.lineWidth = 1.0;
-    set1.circleRadius = 2.0;
-    set1.drawCircleHoleEnabled = YES;
-    set1.valueFont = [UIFont systemFontOfSize:9.f];
-    set1.fillAlpha = 65/255.0;
-    set1.fillColor = UIColor.greenColor;
-    
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    
-    _absorbanceData = [[LineChartData alloc] initWithDataSet:set1];
 }
 
 -(void)setupIntensity
@@ -193,26 +130,6 @@ float yMin;
         index++;
     }
     
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues:lineChartDataArrayY label:@"Intensity"];
-    
-    set1.drawValuesEnabled = YES;
-    set1.drawFilledEnabled = YES;
-    set1.drawCircleHoleEnabled = YES;
-    
-    set1.lineDashLengths = @[@5.f, @2.5f];
-    [set1 setColor:UIColor.blackColor];
-    [set1 setCircleColor:UIColor.blueColor];
-    set1.lineWidth = 1.0;
-    set1.circleRadius = 2.0;
-    set1.drawCircleHoleEnabled = YES;
-    set1.valueFont = [UIFont systemFontOfSize:9.f];
-    set1.fillAlpha = 65/255.0;
-    set1.fillColor = UIColor.blueColor;
-    
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    
-    _intensityData = [[LineChartData alloc] initWithDataSet:set1];
 }
 
 -(void)setupReflectance
@@ -244,26 +161,6 @@ float yMin;
         index++;
     }
     
-    LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithValues:lineChartDataArrayY label:@"Reflectance"];
-    
-    set1.drawValuesEnabled = YES;
-    set1.drawFilledEnabled = YES;
-    set1.drawCircleHoleEnabled = YES;
-    
-    set1.lineDashLengths = @[@5.f, @2.5f];
-    [set1 setColor:UIColor.blackColor];
-    [set1 setCircleColor:UIColor.redColor];
-    set1.lineWidth = 1.0;
-    set1.circleRadius = 2.0;
-    set1.drawCircleHoleEnabled = YES;
-    set1.valueFont = [UIFont systemFontOfSize:9.f];
-    set1.fillAlpha = 65/255.0;
-    set1.fillColor = UIColor.redColor;
-    
-    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:set1];
-    
-    _reflectanceData = [[LineChartData alloc] initWithDataSet:set1];
 }
 
 #pragma mark - ChartViewDelegate
