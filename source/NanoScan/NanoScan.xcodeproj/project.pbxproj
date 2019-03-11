@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65D2838567533E9BC15D6AF2 /* Pods_NanoScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D155F14E617CC12D5039AC91 /* Pods_NanoScan.framework */; };
 		C402A8BD1A3C78310081AFC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C402A8BC1A3C78310081AFC9 /* main.m */; };
 		C402A8C01A3C78310081AFC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C402A8BF1A3C78310081AFC9 /* AppDelegate.m */; };
 		C402A8C31A3C78310081AFC9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C402A8C21A3C78310081AFC9 /* MasterViewController.m */; };
@@ -131,6 +132,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42BEA7EF4C49D04A73E2ED0E /* Pods-NanoScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-NanoScan/Pods-NanoScan.release.xcconfig"; sourceTree = "<group>"; };
 		C402A8B71A3C78310081AFC9 /* NanoScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C402A8BB1A3C78310081AFC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C402A8BC1A3C78310081AFC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -218,6 +220,8 @@
 		C4FF09141A827F4300B6E9BE /* DeviceStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceStatusViewController.m; sourceTree = "<group>"; };
 		C4FF09161A83CAAF00B6E9BE /* DiagnosticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosticViewController.h; sourceTree = "<group>"; };
 		C4FF09171A83CAAF00B6E9BE /* DiagnosticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosticViewController.m; sourceTree = "<group>"; };
+		D155F14E617CC12D5039AC91 /* Pods_NanoScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NanoScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D860C624438E41EA11A1ED83 /* Pods-NanoScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NanoScan/Pods-NanoScan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,12 +258,29 @@
 				C4F7F9561B59C36E00D6C03B /* CFNetwork.framework in Frameworks */,
 				C4F7F9541B59C36900D6C03B /* AudioToolbox.framework in Frameworks */,
 				C4F7F9511B59C35700D6C03B /* Bolts.framework in Frameworks */,
+				65D2838567533E9BC15D6AF2 /* Pods_NanoScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F4FB5F021C1FB2700D69926 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C46B47D81DA45FA500FCAA31 /* KSTSpectrumLibrary.framework */,
+				C493CFF41DA45DCB0059B1E3 /* KSTSpectrumLibrary.framework */,
+				C46501951D1379CA0045DCF8 /* KSTSpectrumLibrary.framework */,
+				C4D0130D1D0B9D0C006EE1D0 /* KSTSpectrumLibrary.framework */,
+				C4D013051D0B7A0A006EE1D0 /* KSTSpectrumLibrary.framework */,
+				C4D013011D0B758C006EE1D0 /* KSTSpectrumLibrary.framework */,
+				C4B0B2F31DA426A800D85A3C /* KSTSpectrumLibrary.framework */,
+				C441DEB51DA7FE42004A43D4 /* KSTSpectrumLibrary.framework */,
+				C4D013091D0B9BEB006EE1D0 /* KSTSpectrumLibrary.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		C402A8AE1A3C78310081AFC9 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +293,8 @@
 				C47E4C051B7BD090000C4DDD /* Frameworks */,
 				C402A8B81A3C78310081AFC9 /* Products */,
 				C4A89EEE1B7BE56800100C4B /* NanoScan-Bridging-Header.h */,
+				0F4FB5F021C1FB2700D69926 /* Recovered References */,
+				D29FB971A64F848219BFC39A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -378,6 +401,7 @@
 				C4F7F9551B59C36E00D6C03B /* CFNetwork.framework */,
 				C4F7F9531B59C36900D6C03B /* AudioToolbox.framework */,
 				C4F7F94F1B59C35700D6C03B /* Bolts.framework */,
+				D155F14E617CC12D5039AC91 /* Pods_NanoScan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -421,6 +445,15 @@
 			name = "NIRscan Nano SDK";
 			sourceTree = "<group>";
 		};
+		D29FB971A64F848219BFC39A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D860C624438E41EA11A1ED83 /* Pods-NanoScan.debug.xcconfig */,
+				42BEA7EF4C49D04A73E2ED0E /* Pods-NanoScan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -428,11 +461,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C402A8DD1A3C78310081AFC9 /* Build configuration list for PBXNativeTarget "NanoScan" */;
 			buildPhases = (
+				85DDB8ACA84CA7BF90D893C6 /* [CP] Check Pods Manifest.lock */,
 				C402A8B31A3C78310081AFC9 /* Sources */,
 				C402A8B41A3C78310081AFC9 /* Frameworks */,
 				C402A8B51A3C78310081AFC9 /* Resources */,
 				C4A89ED51B7BDBA200100C4B /* Embed Frameworks */,
 				C4B540FB1BBB031A00BA5362 /* ShellScript */,
+				BA51EC6357BB4D4CB4023D29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -456,7 +491,8 @@
 				TargetAttributes = {
 					C402A8B61A3C78310081AFC9 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = FYP9A66WY3;
+						DevelopmentTeam = 65RNDLQS78;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -552,6 +588,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		85DDB8ACA84CA7BF90D893C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NanoScan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA51EC6357BB4D4CB4023D29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NanoScan/Pods-NanoScan-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NanoScan/Pods-NanoScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C4B540FB1BBB031A00BA5362 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,12 +790,15 @@
 		};
 		C402A8DE1A3C78310081AFC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D860C624438E41EA11A1ED83 /* Pods-NanoScan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NanoScan/NanoScan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Robert Kressin (92QQ8F2459)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65RNDLQS78;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -733,8 +814,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = ins.saas.native;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e771fff6-6c36-4cd4-b176-b471c1c1f514";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NanoScan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -743,12 +826,15 @@
 		};
 		C402A8DF1A3C78310081AFC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42BEA7EF4C49D04A73E2ED0E /* Pods-NanoScan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NanoScan/NanoScan.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: KS Technologies (FYP9A66WY3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65RNDLQS78;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -767,8 +853,10 @@
 					"$(PROJECT_DIR)/DLP_Spectrum_Library",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = ins.saas.native;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3454cce8-845a-4bd0-9e53-4e41114da334";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NanoScan-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

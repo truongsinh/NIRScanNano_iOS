@@ -66,8 +66,8 @@ float yMin;
     /* NEW CHART */
     _chartView.delegate = self;
     
-    _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"";
+    //_chartView.descriptionText = @"";
+    //_chartView.noDataTextDescription = @"";
     _chartView.noDataText = @"";
     
     _chartView.dragEnabled = YES;

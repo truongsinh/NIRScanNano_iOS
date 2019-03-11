@@ -107,8 +107,11 @@ NSMutableDictionary *_localScanDictionary;
     /* NEW CHART */
     _chartView.delegate = self;
     
-    _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"Tap the Start Scan button below to scan and display data.";
+    //_chartView.description = @"";
+    _chartView.noDataText = @"Tap the Start Scan button below to scan and display data.";
+    
+    //_chartView.descriptionText = @"";
+    //_chartView.noDataText = @"Tap the Start Scan button below to scan and display data.";
     _chartView.noDataText = @"";
     
     _chartView.dragEnabled = YES;

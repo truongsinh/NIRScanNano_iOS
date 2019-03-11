@@ -11,7 +11,6 @@
 #import "KSTNanoSDK.h"
 #import "KSTDataManager.h"
 
-#import <Charts/Charts.h>
 @import Charts;
 
 @interface ScanViewController : UIViewController <UITextFieldDelegate, ChartViewDelegate>

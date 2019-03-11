@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import <Charts/Charts.h>
 
 @import Charts;
 
