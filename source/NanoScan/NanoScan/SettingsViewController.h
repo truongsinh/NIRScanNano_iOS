@@ -15,6 +15,7 @@ extern NSString *const kNanoSettingsDeviceName;
 extern NSString *const kNanoSettingsDeviceIdentifier;
 extern NSString *const kNanoSettingsTemperaturePreference;
 extern NSString *const kNanoSettingsSpatialPreference;
+extern NSString *const kNanoSettingsServerUrl;
 
 typedef enum
 {

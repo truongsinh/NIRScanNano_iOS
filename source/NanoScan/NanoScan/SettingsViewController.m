@@ -14,7 +14,8 @@ typedef enum
     kSettingsRowTemperatureUnits = 0,
     kSettingsRowSpatialFrequencyUnits,
     kSettingsRowNanoStartSearch,
-    kSettingsRowClearNano
+    kSettingsRowClearNano,
+    kSettingsServerUrl
 } kSettingsRow;
 
 // Keys for NSUserDefaults
@@ -22,6 +23,7 @@ NSString *const kNanoSettingsDeviceName             = @"kNanoSettingsDeviceName"
 NSString *const kNanoSettingsDeviceIdentifier       = @"kNanoSettingsDeviceIdentifier";
 NSString *const kNanoSettingsTemperaturePreference  = @"kNanoSettingsTemperaturePreference";    // 0 - Celsius, 1 - Fahrenheit
 NSString *const kNanoSettingsSpatialPreference      = @"kNanoSettingsSpatialPreference";        // 0 - Wavelength, 1 - Wavenumber
+NSString *const kNanoSettingsServerUrl            = @"kNanoSettingsServerUrl";
 
 @interface SettingsViewController ()
 @end
@@ -56,6 +58,12 @@ NSString *const kNanoSettingsSpatialPreference      = @"kNanoSettingsSpatialPref
     if( !temperatureDefault )
     {
         [self changeTemperaturePreferenceTo:kTemperaturePreferenceCelsius];
+    }
+    
+    NSString *serverUrl = [_userDefaults objectForKey:kNanoSettingsServerUrl];
+    if( !serverUrl )
+    {
+        [self changeServerUrlTo:@"https://nir-rnd.inspectorio.com"];
     }
 
     float segmentYLocation = 44.0 - 44.0/2.0 - 44.0/4.0;
@@ -105,7 +113,7 @@ NSString *const kNanoSettingsSpatialPreference      = @"kNanoSettingsSpatialPref
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return kSettingsRowClearNano+1;
+    return kSettingsServerUrl+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,6 +172,24 @@ NSString *const kNanoSettingsSpatialPreference      = @"kNanoSettingsSpatialPref
             
         } break;
             
+        case kSettingsServerUrl:
+        {
+            CGRect someRect = CGRectMake(self.view.frame.size.width-200.0, segmentYLocation, 190.0, 44.0/1.6);
+            UITextField* text = [[UITextField alloc] initWithFrame:someRect];
+            text.layer.cornerRadius=8.0f;
+            text.layer.masksToBounds=YES;
+            text.backgroundColor=[UIColor colorWithWhite: 0.90  alpha:1];
+            [text addTarget:self
+                          action:@selector(kSettingsServerUrlDidChange:)
+                forControlEvents:UIControlEventEditingChanged];
+            text.text = [_userDefaults objectForKey:kNanoSettingsServerUrl];
+            UIView* view = [[UIView alloc] initWithFrame:someRect];
+            [view addSubview:text];
+            cell.textLabel.text = @"Server URL";
+            [cell.contentView addSubview:text];
+            
+        } break;
+            
         default:
             break;
     }
@@ -173,6 +199,17 @@ NSString *const kNanoSettingsSpatialPreference      = @"kNanoSettingsSpatialPref
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+
+-(void)kSettingsServerUrlDidChange:(UITextField *)textField {
+    [self changeServerUrlTo:textField.text];
+}
+
+-(void)changeServerUrlTo:(NSString *)serverUrl
+{
+    [_userDefaults setObject:serverUrl forKey:kNanoSettingsServerUrl];
+    [_userDefaults synchronize];
 }
 
 -(void)changeSpatialUnits:(UISegmentedControl *)segmentedControl

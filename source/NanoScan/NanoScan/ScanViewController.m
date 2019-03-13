@@ -147,6 +147,26 @@ NSMutableDictionary *_localScanDictionary;
     _chartView.data = _reflectanceData;
 }
 
+// NOT INSPECTORIO, but this is a bug in original implementation, which will cause memory leak
+// and funny behavior when going in and out of scan view multiple time
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"viewController will disappear");
+        NSLog(@"viewController is being dismissed");
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKTemperatureThresholdExceeded object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKHumidityThresholdExceeded object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKBusy object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKReady object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKScanCompleted object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKDownloadingRefCalCoefficients object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKDownloadingRefMatrixCoefficients object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKDownloadingData object:nil];
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKDisconnected object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:kKSTNanoSDKIncompatibleFirmware object:nil];
+}
+
 -(void)setupAbsorbance
 {
     NSDictionary *scanDictionary = [[[KSTDataManager manager] dataArray] lastObject];
@@ -503,7 +523,7 @@ NSMutableDictionary *_localScanDictionary;
         [self setupIntensity];
         
         // START Inspectorio customization to send data to server
-        NSString *serverUrl = @"https://6c03dc7a.ngrok.io";
+        NSString *serverUrl = [[NSUserDefaults standardUserDefaults] objectForKey:kNanoSettingsServerUrl];
         //convert object to data
         NSError *error;
         NSData *postData = [NSJSONSerialization dataWithJSONObject:scanDictionary options:kNilOptions error:&error];
@@ -533,7 +553,7 @@ NSMutableDictionary *_localScanDictionary;
                   // Present action sheet.
                   [self presentViewController:actionSheet animated:YES completion:nil];
               } else {
-                  
+                  NSLog(@"INSPECTORIO: send data to sever");
               }
           }];
         [dataTask resume];
