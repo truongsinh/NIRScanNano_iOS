@@ -1,0 +1,6 @@
+framework module Pods_NanoScan {
+  umbrella header "Pods-NanoScan-umbrella.h"
+
+  export *
+  module * { export * }
+}
