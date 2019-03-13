@@ -502,6 +502,44 @@ NSMutableDictionary *_localScanDictionary;
         [self setupAbsorbance];
         [self setupIntensity];
         
+        // START Inspectorio customization to send data to server
+        NSString *serverUrl = @"https://6c03dc7a.ngrok.io";
+        //convert object to data
+        NSError *error;
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:scanDictionary options:kNilOptions error:&error];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setHTTPMethod:@"POST"];
+        [request setURL:[NSURL URLWithString:serverUrl]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setHTTPBody:postData];
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+          {
+              if (error) {
+                  
+                  NSLog(@"Connection could not be made");
+                  NSLog(@"%@",[error localizedDescription]);
+                  UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Cannot send data to server" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleActionSheet];
+
+                  [actionSheet addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+                      // Cancel button tappped.
+                      [self dismissViewControllerAnimated:YES completion:^{
+                      }];
+                  }]];
+                  // Present action sheet.
+                  [self presentViewController:actionSheet animated:YES completion:nil];
+              } else {
+                  
+              }
+          }];
+        [dataTask resume];
+        
+        // END Inspectorio customization to send data to server
+
         if( _scanSegmentControl.selectedSegmentIndex == 0 )
         {
             _chartView.data = _reflectanceData;

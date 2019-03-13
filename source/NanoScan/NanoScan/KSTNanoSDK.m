@@ -755,11 +755,20 @@ bool isForcingHumidityRead = YES;
         NSString *mfgName = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         [_KSTNanoSDKdeviceInfo setObject:mfgName forKey:kKSTNanoSDKKeyManufacturerName];
     }
+    // @todo Inspectorio temporary disable to fix bug
+    /**
+     ```
+     Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '*** -[__NSDictionaryM setObject:forKey:]: object cannot be nil (key: kKSTNanoSDKKeyModelNumber)'
+     *** First throw call stack:
+     (0x1d2b00ec4 0x1d1cd1a40 0x1d2a78494 0x1d29eba30 0x100b16150 0x1d86b6cc0 0x1d86b6e20 0x1d86b24d0 0x1d86acbdc 0x1d86bb750 0x102c93824 0x102c94dc8 0x102c9ce6c 0x102c9db98 0x102c9ccbc 0x102c9db60 0x102ca7bfc 0x1d271d0dc 0x1d271fcec)
+     libc++abi.dylib: terminating with uncaught exception of type NSException
+     ```
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A24"]])
     {
         NLog(@"[Did Update Model -> %@ (%@)", [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding], characteristic.value);
         [_KSTNanoSDKdeviceInfo setObject:[[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding] forKey:kKSTNanoSDKKeyModelNumber];
     }
+     */
     else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A25"]])
     {
         if( characteristic.value.length > 0 )
